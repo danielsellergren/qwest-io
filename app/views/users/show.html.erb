@@ -1,3 +1,8 @@
 <h2><%= @user.email %></h2>
 
 <%= image_tag @user.image unless @user.image.nil? %>
+
+<div data-controller="clipboard">
+Share: <input data-clipboard-target="source" type="text" value="<%= request.original_url %>" readonly>
+  <button data-action="clipboard#copy">Copy to Clipboard</button>
+</div>
