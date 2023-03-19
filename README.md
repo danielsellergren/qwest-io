@@ -1,24 +1,25 @@
-# README
+# Qwest.io
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Qwest is a Rails 7 application which allows Users to login with their Facebook account, take a quick questionnaire, and share their answers with the world.
 
-Things you may want to cover:
+## Setup
 
-* Ruby version
+Clone this repository.
 
-* System dependencies
+    git clone git@github.com:danielsellergren/qwest-io.git
 
-* Configuration
+Run the `setup` script. This will install the required dependencies and prepare your database. Note that this script is intended to be idempotent and will also reset your local database whenever it is run.
 
-* Database creation
+    bin/setup
 
-* Database initialization
+## Tests
 
-* How to run the test suite
+You can run the full test suite with the `ci` script.
 
-* Services (job queues, cache servers, search engines, etc.)
+    bin/ci
 
-* Deployment instructions
+## Deployment
 
-* ...
+Qwest is currently [running on Fly](https://qwest-io.fly.dev). You will need `flyctl` and the correct credentials for our account in order to run deployments. Once you have that setup, run the `deploy` script which will also run the `ci` script beforehand.
+
+    bin/deploy
