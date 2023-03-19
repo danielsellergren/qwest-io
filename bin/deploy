@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -e
+
+echo "[ bin/deploy ] Running CI"
+bin/ci
+
+echo "[ bin/deploy ] Deploying latest to Fly"
+fly deploy
