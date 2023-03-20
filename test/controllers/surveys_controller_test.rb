@@ -9,13 +9,6 @@ class SurveysControllerTest < ActionDispatch::IntegrationTest
   end
 
   class AuthenticatedSurveysControllerTest < SurveysControllerTest
-    test "should get index" do
-      sign_in users(:one)
-
-      get surveys_url
-      assert_response :success
-    end
-    
     test "should get new" do
       sign_in users(:one)
       
@@ -30,59 +23,13 @@ class SurveysControllerTest < ActionDispatch::IntegrationTest
         post surveys_url, params: { survey: { user_id: @survey.user_id } }
       end
 
-      assert_redirected_to survey_url(Survey.last)
-    end
-  
-    test "should show survey" do
-      sign_in users(:one)
-
-      get survey_url(@survey)
-      assert_response :success
-    end
-  
-    test "should get edit" do
-      sign_in users(:one)
-
-      get edit_survey_url(@survey)
-      assert_response :success
-    end
-    
-    test "should update survey" do
-      sign_in users(:one)
-
-      patch survey_url(@survey), params: { survey: {user_id: @survey.user_id } }
-      assert_redirected_to survey_url(@survey)
-    end
-  
-    test "should destroy survey" do
-      sign_in users(:one)
-
-      assert_difference("Survey.count", -1) do
-        delete survey_url(@survey)
-      end
-
-      assert_redirected_to surveys_url
+      assert_redirected_to user_url(users(:one))
     end
   end
 
   class UnauthenticatedSurveysControllerTest < SurveysControllerTest
-    test "should get index and redirect to login" do
-      get surveys_url
-      assert_response :redirect
-    end
-
     test "should get new and redirect to login" do
       get new_survey_url
-      assert_response :redirect
-    end
-
-    test "should get show and redirect to login" do
-      get survey_url(@survey)
-      assert_response :redirect
-    end
-
-    test "should get edit and redirect to login" do
-      get edit_survey_url(@survey)
       assert_response :redirect
     end
   end

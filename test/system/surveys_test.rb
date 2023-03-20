@@ -8,38 +8,17 @@ class SurveysTest < ApplicationSystemTestCase
     sign_in users(:one)
   end
 
-  test "visiting the index" do
-    visit surveys_url
-    assert_selector "h1", text: "Surveys"
-  end
-
   test "should create survey" do
-    visit surveys_url
-    click_on "New survey"
+    visit root_url
+    click_on "Get Started"
 
     fill_in "survey[responses_attributes][0][answer]", with: "Dog"
     fill_in "survey[responses_attributes][1][answer]", with: "Cat"
-    click_on "Create Survey"
+    click_on "Submit"
 
     assert_text "Survey was successfully created"
-    click_on "Back"
-  end
-
-  test "should update Survey" do
-    visit survey_url(@survey)
-    click_on "Edit this survey", match: :first
-
-    fill_in "survey[responses_attributes][0][answer]", with: "Cat"
-    click_on "Update Survey"
-
-    assert_text "Survey was successfully updated"
-    click_on "Back"
-  end
-
-  test "should destroy Survey" do
-    visit survey_url(@survey)
-    click_on "Destroy this survey", match: :first
-
-    assert_text "Survey was successfully destroyed"
+    assert_text users(:one).email
+    assert_text "Dog"
+    assert_text "Cat"
   end
 end
