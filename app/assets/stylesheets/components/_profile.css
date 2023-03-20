@@ -1,0 +1,17 @@
+.profile {
+
+}
+.profile__image {
+  margin: 0 auto var(--space-s) auto;
+}
+.profile__survey {
+  margin-top: var(--space-l);
+  margin-bottom: var(--space-l);
+}
+.profile__survey__question {
+  margin-top: var(--space-xl);
+}
+.profile__survey__response {
+  font-weight: 400;
+  margin-top: var(--space-l);
+}

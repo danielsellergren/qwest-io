@@ -1,0 +1,15 @@
+.banner {
+  text-align: center;
+}
+.banner__tagline {
+  margin-top: var(--space-l);
+  font-size: var(--font-size-xxxxl);
+}
+.banner__text {
+  margin-top: var(--space-m);
+  font-size: var(--font-size-xl);
+}
+.banner__cta {
+  margin-top: var(--space-l);
+  font-size: var(--font-size-xl);
+}

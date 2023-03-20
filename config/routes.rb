@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :surveys
   # Root for Welcome/Marketing page.
   root "pages#home"
 
@@ -8,4 +7,7 @@ Rails.application.routes.draw do
 
   # Public route for Users.
   resources :users, only: [:show]
+
+  # Surveys
+  resources :surveys, only: [:new, :create]
 end

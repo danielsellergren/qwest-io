@@ -1,8 +1,21 @@
-<h2><%= @user.email %></h2>
+<main class="main profile">
+  <%= image_tag(@user.image, class: "profile__image") unless @user.image.nil? %>
+  <h2><%= @user.email %></h2>
 
-<%= image_tag @user.image unless @user.image.nil? %>
+  <section class="profile__survey">
+    <% if @user.surveys.empty? %>
+    <h3>No Surveys answered yet!</h3>
+    <% else %>
+      <% @user.surveys.last.responses.each_with_index do |response, index| %>
+      <h3 class="profile__survey__question"><%= @questions[index].prompt %></h3>
+      <h4 class="profile__survey__response"><%= response.answer %></h4>
+      <% end %>
+    <% end %>
+  </section>
 
-<div data-controller="clipboard">
-Share: <input data-clipboard-target="source" type="text" value="<%= request.original_url %>" readonly>
-  <button data-action="clipboard#copy">Copy to Clipboard</button>
-</div>
+  <div class="clipboard" data-controller="clipboard">
+    <p>Share with anyone!</p>
+    <input class="clipboard__input" data-clipboard-target="source" type="text" value="<%= request.original_url %>" readonly>
+    <button class="button clipboard__button" data-action="clipboard#copy">Copy</button>
+  </div>
+</main>

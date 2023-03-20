@@ -1,15 +1,14 @@
 <header class="header">
-  <div class="header__logo">Qwest</div>
+  <div class="header__logo"><%= link_to "Qwest", root_path %></div>
   <nav class="header__nav">
-    <ul>
-    <% if user_signed_in? %>
-      <%= link_to current_user.email, user_path(current_user) %>
-      <%= link_to "Settings", edit_user_registration_path %>
-      <%= link_to "Log out", destroy_user_session_path, data: { "turbo-method": :delete } %>
-    <% else %>
-      <%= link_to "Log in", new_user_session_path %>
-      <%= link_to "Register", new_user_registration_path %>
-    <% end %>
-    </ul>
+  <% if user_signed_in? %>
+    <span class="header__email"><%= current_user.email %></span>
+    <%= link_to "Profile", user_path(current_user) %>
+    <%= link_to "Settings", edit_user_registration_path %>
+    <%= link_to "Log out", destroy_user_session_path, data: { "turbo-method": :delete } %>
+  <% else %>
+    <%= link_to "Log in", new_user_session_path %>
+    <%= link_to "Register", new_user_registration_path %>
+  <% end %>
   </nav>
 </header>

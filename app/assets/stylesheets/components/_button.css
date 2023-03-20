@@ -1,0 +1,12 @@
+.button {
+  display: inline-block;
+  padding: var(--space-xxxs) var(--space-xs);
+  border-radius: var(--border-radius);
+  border: solid 2px transparent;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  transition: filter 400ms, color 200ms;
+  color: var(--color-white);
+  background: var(--color-primary);
+}

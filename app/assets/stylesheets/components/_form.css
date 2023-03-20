@@ -1,0 +1,19 @@
+form {
+  text-align: center;
+}
+form input {
+  display: block;
+  font-size: var(--font-size-l);
+  margin: 0 auto;
+  width: 20rem;
+  padding: var(--space-xxs);
+}
+form label {
+  display: block;
+  margin-top: var(--space-l);
+  font-size: var(--font-size-m);
+}
+form .button {
+  margin: var(--space-l) auto 0 auto;
+  width: 15rem;
+}

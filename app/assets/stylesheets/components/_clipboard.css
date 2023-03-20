@@ -1,0 +1,7 @@
+.clipboard {
+  margin-top: var(--space-m);
+  text-align: center;
+}
+.clipboard__input {
+  width: 20rem;
+}
