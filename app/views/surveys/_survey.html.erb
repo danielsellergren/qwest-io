@@ -3,4 +3,8 @@
     <strong>User:</strong>
     <%= survey.user_id %>
   </p>
+  <% survey.responses.each_with_index do |response, index| %>
+  <h2><%= @questions[index].prompt %></h2>
+  <p><%= response.answer %></p>
+  <% end %>
 </div>
