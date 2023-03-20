@@ -1,0 +1,26 @@
+<%= form_with(model: survey) do |form| %>
+  <% if survey.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(survey.errors.count, "error") %> prohibited this survey from being saved:</h2>
+
+      <ul>
+        <% survey.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.hidden_field :user_id, value: survey.user_id %>
+
+  <%= form.fields_for :responses do |responses_form| %>
+    <h2><%= @questions[responses_form.index].prompt %></h2>
+    <%= responses_form.label :answer %>
+    <%= responses_form.text_field :answer %>
+    <%= responses_form.hidden_field :question_id, value: @questions[responses_form.index].id %>
+  <% end %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

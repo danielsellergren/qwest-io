@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :surveys
   # Root for Welcome/Marketing page.
   root "pages#home"
 
