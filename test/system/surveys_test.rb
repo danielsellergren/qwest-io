@@ -1,8 +1,11 @@
 require "application_system_test_case"
 
 class SurveysTest < ApplicationSystemTestCase
+  include Devise::Test::IntegrationHelpers
+
   setup do
     @survey = surveys(:one)
+    sign_in users(:one)
   end
 
   test "visiting the index" do
@@ -14,8 +17,8 @@ class SurveysTest < ApplicationSystemTestCase
     visit surveys_url
     click_on "New survey"
 
-    fill_in "Name", with: @survey.name
-    fill_in "User", with: @survey.user_id
+    fill_in "survey[responses_attributes][0][answer]", with: "Dog"
+    fill_in "survey[responses_attributes][1][answer]", with: "Cat"
     click_on "Create Survey"
 
     assert_text "Survey was successfully created"
@@ -26,8 +29,7 @@ class SurveysTest < ApplicationSystemTestCase
     visit survey_url(@survey)
     click_on "Edit this survey", match: :first
 
-    fill_in "Name", with: @survey.name
-    fill_in "User", with: @survey.user_id
+    fill_in "survey[responses_attributes][0][answer]", with: "Cat"
     click_on "Update Survey"
 
     assert_text "Survey was successfully updated"
